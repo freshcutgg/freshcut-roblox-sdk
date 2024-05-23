@@ -1,0 +1,20 @@
+{
+  "name": "roblox-sdk",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "$path": "src/RemoteEvents.model.json"
+    },
+
+    "ServerScriptService": {
+      "$path": "src/server"
+    },
+
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$path": "src/client"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "ClassName": "Folder",
+  "Children": [
+    {
+      "Name": "FC_GetProfileDetailsEvent",
+      "ClassName": "RemoteEvent"
+    }
+  ]
+}
