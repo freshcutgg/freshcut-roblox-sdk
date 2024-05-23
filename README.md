@@ -8,7 +8,7 @@ The FreshCut Roblox SDK is a file that you can insert into your Roblox game. It 
 
 Secret:
 
-- You will need to contact a FreshCut team member to receive your FreshCut External API key, which will need to be placed into your app’s secret store.
+- You will need to contact a FreshCut team member to receive your FreshCut External API key, which will need to be placed into your app’s secret store.  Please reach out to `adrianhero` directly via discord or in your respective game’s discord channel inside of the [FreshCut Developer Discord server](https://discord.gg/BYdaS8pMHV).
 - See [this Roblox Devforum article](https://devforum.roblox.com/t/secrets-store-general-availability/2892154) for a guide to setting up and using [Secrets](https://create.roblox.com/docs/reference/engine/datatypes/Secret)
 - As this SDK requires a Secret, it will NOT work on local builds. Please add a bypass case in your app’s code when your are testing locally.
 
