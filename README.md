@@ -28,23 +28,23 @@ Detailed information is included in the example file above, but the basic use ca
 
 ```graphql
 {
-  		id
-  		username
-  		bio
-  		role
-  		isFeatured
-  		firstVideoPublishedDate
-  		profileImageUrl
-  		backgroundImageUrl
-  		videoCount
-  		likesCount
-  		viewsCount
-  		followersCount
-  		followingCount
-  		socials {
-  		  type
-        url
-      	count
-      }
+        id
+        username
+        bio
+        role
+        isFeatured
+        firstVideoPublishedDate
+        profileImageUrl
+        backgroundImageUrl
+        videoCount
+        likesCount
+        viewsCount
+        followersCount
+        followingCount
+        socials {
+          type
+          url
+          count
+        }
 }
 ```
