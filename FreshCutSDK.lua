@@ -44,6 +44,12 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
 
+local FC_GetProfileDetailsFunction = Instance.new("RemoteFunction")
+FC_GetProfileDetailsFunction.Name = "FC_GetProfileDetailsFunction"
+FC_GetProfileDetailsFunction.Parent = ReplicatedStorage
+
+print("FreshCut SDK Loaded")
+
 -- This is the DEV ENVIRONMENT URL
 local url = 'https://graphql-gateway.api.dev-cloud.freshcut.gg'
 
@@ -53,11 +59,12 @@ local url = 'https://graphql-gateway.api.dev-cloud.freshcut.gg'
 -- function get fetch the API key id and secret
 local function getAPIKey() 
   warn('getting api key')
-  local freshcut_app_key = HttpService:GetSecret("freshcut_app_key")
+  local api_key = HttpService:GetSecret("freshcut_app_key")
+
   warn('secrets successfully fetched')
   local headers = {
     ["Content-Type"] = "application/json",
-		["Authorization"] = freshcut_app_key:AddPrefix("Basic ")
+		["Authorization"] = api_key:AddPrefix("Basic ")
   }
 
   local getAPIKeyQuery = [[
@@ -167,24 +174,18 @@ handleGetUserDetails = function (robloxUserId)
 	end
 end
 
-
-local remoteEvent = ReplicatedStorage:FindFirstChild("FC_GetProfileDetailsEvent")
-	remoteEvent.OnServerEvent:Connect(function(player, text)
-  local status, result = pcall(handleGetUserDetails, player.UserId)
-  if not status then 
-    return "API Error" 
-  end
+FC_GetProfileDetailsFunction.OnServerInvoke = function(player, text)
+	if game:GetService("RunService"):IsStudio() then
+		error("ERROR: Cannot run in Studio. Please run in a published instance.")
+	end
+	local status, result = pcall(handleGetUserDetails, player.UserId)
+	if not status then 
+		return "API Error" 
+	end
 
 	if result.errors then
 		return result.errors[1].message
 	else
-	remoteEvent:FireClient(player, result["data"]["userProfileBySocial"]["details"])
+		return result["data"]["userProfileBySocial"]["details"]
 	end
-	return
-end)
-
-local module =  {
-  handleGetUserDetails = handleGetUserDetails
-}
-
-return module
+end
