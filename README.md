@@ -10,13 +10,12 @@ Secret:
 
 - You will need to contact a FreshCut team member to receive your FreshCut External API key, which will need to be placed into your app’s secret store.  Please reach out to `adrianhero` directly via discord or in your respective game’s discord channel inside of the [FreshCut Developer Discord server](https://discord.gg/BYdaS8pMHV).
 - See [this Roblox Devforum article](https://devforum.roblox.com/t/secrets-store-general-availability/2892154) for a guide to setting up and using [Secrets](https://create.roblox.com/docs/reference/engine/datatypes/Secret)
-- As this SDK requires a Secret, it will NOT work on local builds. Please add a bypass case in your app’s code when your are testing locally.
+- As this SDK requires a Secret, it will NOT work on local builds. You will be kindly served an error from the API
 
 Files included:
 
 - FreshCutSDK.lua
     - The base file used for communicating with FreshCut’s backend, and technically the only file needed from us for things to work. You will place this file into `ServerScriptService`
-        - You will need to create `RemoteEvent` files specifically named as each event from FreshCutSDK you’d like to use. Currently, the only event available is `FC_GetProfileDetailsEvent`. Put this file inside of `ReplicatedStorage`.
 - FC_GetProfileDetailsEvent_Client_Example.lua
     - An example client script for interfacing with the SDK. There is a both an event dispatcher function and a listener function included. Place this file inside of `StarterPlayer/StarterPlayerScripts`.
 
@@ -24,7 +23,7 @@ Files included:
 
 ---
 
-Detailed information is included in the example file above, but the basic use case is to dispatch the event sometime in your app, then use the listener to examine a user’s FreshCut user data (if it exists). The returned data is as follows:
+Detailed information is included in the example file above, but the basic use case is to dispatch the RemoteFunction in your app, then examine the user’s FreshCut account data (if it exists). The returned data is as follows:
 
 ```graphql
 {
