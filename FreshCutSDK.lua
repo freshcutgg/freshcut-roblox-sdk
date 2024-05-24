@@ -170,10 +170,13 @@ local remoteEvent = ReplicatedStorage:FindFirstChild("FC_GetProfileDetailsEvent"
   if not status then 
     return "API Error" 
   end
-  	-- print("final result: " .. result["data"]["userProfileBySocial"]["details"])
 
+	if result.errors then
+		return result.errors[1].message
+	else
 	remoteEvent:FireClient(player, result["data"]["userProfileBySocial"]["details"])
-	return -- Add an explicit return statement here
+	end
+	return
 end)
 
 local module =  {
