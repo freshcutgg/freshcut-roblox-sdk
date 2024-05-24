@@ -44,7 +44,11 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
 
-local url = 'https://graphql-gateway.api.cloud.freshcut.gg'
+-- This is the DEV ENVIRONMENT URL
+local url = 'https://graphql-gateway.api.dev-cloud.freshcut.gg'
+
+-- This is the PRODUCTION ENVIRONMENT URL...use at your own risk when ready!
+-- local url = 'https://graphql-gateway.api.cloud.freshcut.gg'
 
 -- function get fetch the API key id and secret
 local function getAPIKey() 
