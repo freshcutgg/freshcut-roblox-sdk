@@ -29,17 +29,11 @@
 --
 --    1. Place this file into ServerScriptService
 --
---    2. Create a new Event named FC_GetProfileDetailsEvent inside of ReplicatedStorage
+--    2. Dispatch a remote function call to FC_GetProfileDetailsFunction for the data
 --
---    3. Code an event dispatch from your client script to trigger the FC_GetProfileEvent
+--    3. The FC_GetProfileDetailsFunction will return the user's profile details if the user exists in the FreshCut database
 --
---    4. Code a listener to consume the information returned from FreshCut
---
---
---
-
-
-
+--    4. That's it! Check the README for complete user data details
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
